@@ -1,0 +1,24 @@
+{
+  "name": "chess-wasm",
+  "version": "0.0.1",
+  "main": "dist/chess.js",
+  "author": {
+    "name": "harmless-tech"
+  },
+  "homepage": "https://chess.harmless.tech/",
+  "repository": "https://github.com/harmless-tech/chess",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "server": "http-server ./dist --port 3001 --brotli --cors"
+  },
+  "devDependencies": {
+    "@wasm-tool/wasm-pack-plugin": "^1.6.0",
+    "html-webpack-plugin": "^5.5.0",
+    "http-server": "^14.1.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "packageManager": "yarn@3.2.1"
+}

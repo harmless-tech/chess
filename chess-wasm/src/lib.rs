@@ -10,9 +10,8 @@ extern {
 }
 
 #[wasm_bindgen]
-pub fn greet() {
-    #[cfg(feature = "console_error_panic_hook")]
-    {
+pub fn run() {
+    #[cfg(feature = "console_error_panic_hook")] {
         console_error_panic_hook::set_once();
     }
 
