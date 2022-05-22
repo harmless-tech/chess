@@ -27,4 +27,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Yarn
-        run: yarn cf
+        run: |
+          yarn install
+          yarn cf
