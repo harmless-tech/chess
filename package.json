@@ -1,0 +1,21 @@
+{
+  "name": "chess",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "chess-wasm"
+  ],
+  "scripts": {
+    "cf": "yarn install && echo build && yarn export",
+    "export": "yarn install && node build.js",
+    "server": "http-server ./public --port 3001 --brotli --cors"
+  },
+  "packageManager": "yarn@3.2.1",
+  "devDependencies": {
+    "fs-extra": "^10.1.0",
+    "http-server": "^14.1.0",
+    "manage-path": "^2.0.0",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2"
+  }
+}
