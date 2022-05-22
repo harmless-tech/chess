@@ -30,3 +30,7 @@ jobs:
         run: |
           yarn install
           yarn cf
+      - uses: actions/upload-artifact@v3
+        with:
+          name: public
+          path: ./public
