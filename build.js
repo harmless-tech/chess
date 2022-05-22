@@ -12,17 +12,17 @@ const wasmDir = path.join(projectRoot, "chess-wasm");
 
 // Install and build workspace projects
 const install1 = exec("yarn install", {
-    cwd: frontendDir
+    cwd: "./frontend"
 });
 const install2 = exec("yarn install", {
-    cwd: wasmDir
+    cwd: "./chess-wasm"
 });
 
 console.log(install1.toString("utf8"));
 console.log(install2.toString("utf8"));
 
 execSync("wasm-pack build --release", {
-    cwd: wasmDir
+    cwd: "./chess-wasm"
 });
 execSync("yarn build");
 
