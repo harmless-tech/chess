@@ -6,7 +6,7 @@
     "chess-wasm"
   ],
   "scripts": {
-    "cf": "yarn install && echo build && yarn export",
+    "cf": "yarn install && node cf-setup.js && yarn export",
     "export": "yarn install && node build.js",
     "server": "http-server ./public --port 3001 --brotli --cors"
   },
