@@ -1,3 +1,10 @@
+self.onmessage = async ({}) => {
+    const { test } = await import("../../wasm/pkg");
+    test();
+};
+
+export {}
+
 // const { run, test } = await import("../wasm/pkg");
 // test();
 
@@ -20,10 +27,13 @@
 
 // export {}
 
-import * as Comlink from "comlink";
+// import * as Comlink from "comlink";
 
-const { test } = await import("../wasm/pkg");
+// const { test } = await import("../../wasm/pkg");
 
-Comlink.expose({
-    test
-});
+// export type VoidConstructor = { new (): void }
+// export default test;
+
+// Comlink.expose({
+//     test
+// });
