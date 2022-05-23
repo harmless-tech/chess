@@ -22,8 +22,9 @@ console.log(install1.toString("utf8"));
 console.log(install2.toString("utf8"));
 
 console.log(execSync("wasm-pack build --release", {
-    cwd: "./chess-wasm"
-}).toString("utf8"));
+    cwd: "./chess-wasm",
+    encoding: "utf8"
+}).toString());
 execSync("yarn build");
 
 // Move everything to /public
