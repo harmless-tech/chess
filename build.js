@@ -1,7 +1,7 @@
-const fs = require("fs");
 const fsExtra = require("fs-extra");
 const mkdirp = require("mkdirp");
 const path = require("path");
+const managePath = require("manage-path")
 const rimraf = require("rimraf");
 const exec = require("child_process").exec;
 const execSync = require("child_process").execSync;
@@ -12,18 +12,22 @@ const wasmDir = path.join(projectRoot, "chess-wasm");
 
 // Install and build workspace projects
 const install1 = exec("yarn install", {
-    cwd: frontendDir
+    cwd: frontendDir,
+    encoding: "utf8"
 });
 const install2 = exec("yarn install", {
-    cwd: wasmDir
+    cwd: wasmDir,
+    encoding: "utf8"
 });
+console.log(install1.toString());
+console.log(install2.toString());
 
-console.log(install1.toString("utf8"));
-console.log(install2.toString("utf8"));
-
+let alterPath = managePath(process.env);
+alterPath.push(path.join(process.env.HOME, ".cargo/bin"));
 execSync("wasm-pack build --release", {
     cwd: wasmDir
 });
+
 execSync("yarn build");
 
 // Move everything to /public
