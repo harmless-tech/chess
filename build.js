@@ -21,6 +21,13 @@ const install2 = exec("yarn install", {
 console.log(install1.toString("utf8"));
 console.log(install2.toString("utf8"));
 
+console.log(execSync("ls", {
+    encoding: "utf8"
+}).toString());
+console.log(execSync("ls", {
+    cwd: "./chess-wasm",
+    encoding: "utf8"
+}).toString());
 console.log(execSync("wasm-pack build --release", {
     cwd: "./chess-wasm",
     encoding: "utf8"
