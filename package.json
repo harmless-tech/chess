@@ -8,7 +8,7 @@
   "scripts": {
     "cf": "node cf-setup.js && yarn export",
     "export": "node build.js",
-    "server": "http-server ./public --port 3001 --brotli --cors"
+    "server": "http-server ./public --port 3001 --brotli --cors -c-1"
   },
   "packageManager": "yarn@3.2.1",
   "devDependencies": {

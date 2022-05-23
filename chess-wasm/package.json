@@ -1,7 +1,6 @@
 {
   "name": "chess-wasm",
   "version": "0.0.1",
-  "main": "dist/chess.js",
   "author": {
     "name": "harmless-tech"
   },
@@ -11,7 +10,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
-    "server": "http-server ./dist --port 3001 --brotli --cors"
+    "server": "http-server ./dist --port 3001 --brotli --cors -c-1"
   },
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "^1.6.0",
