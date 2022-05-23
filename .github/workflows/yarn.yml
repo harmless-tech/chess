@@ -1,0 +1,43 @@
+name: Build site
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cache
+        uses: actions/cache@v3.0.2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            ./.yarn/cache
+            ./node_modules
+            ./frontend/.yarn/cache
+            ./frontend/node_modules
+            ./chess-wasm/.yarn/cache
+            ./chess-wasm/node_modules
+            ./chess-wasm/target
+          restore-keys: |
+            ${{ runner.os }}-cargo-${{ hashFiles('**/yarn.lock') }}
+            ${{ runner.os }}-cargo-${{ hashFiles('**/frontend/yarn.lock') }}
+            ${{ runner.os }}-cargo-${{ hashFiles('**/chess-wasm/yarn.lock') }}
+            ${{ runner.os }}-cargo-${{ hashFiles('**/chess-wasm/Cargo.lock') }}
+      - name: Install wasm-pack
+        run: npm install -g wasm-pack
+      - name: Yarn install
+        run: yarn install
+      - name: Yarn export
+        run: yarn cf
+      - name: Upload public folder
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: public
+          path: ./public
