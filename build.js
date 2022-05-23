@@ -1,41 +1,25 @@
-const fsExtra = require("fs-extra");
-const mkdirp = require("mkdirp");
 const path = require("path");
 const managePath = require("manage-path")
-const rimraf = require("rimraf");
-const exec = require("child_process").exec;
 const execSync = require("child_process").execSync;
 
 const projectRoot = __dirname;
-const frontendDir = path.join(projectRoot, "frontend");
-const wasmDir = path.join(projectRoot, "chess-wasm");
-
-// Install and build workspace projects
-const install1 = exec("yarn install", {
-    cwd: frontendDir,
-    encoding: "utf8"
-});
-const install2 = exec("yarn install", {
-    cwd: wasmDir,
-    encoding: "utf8"
-});
-console.log(install1.toString());
-console.log(install2.toString());
+const wasmDir = path.join(projectRoot, "wasm");
 
 let alterPath = managePath(process.env);
 alterPath.push(path.join(process.env.HOME, ".cargo/bin"));
-execSync("wasm-pack build --release", {
-    cwd: wasmDir
-});
 
-execSync("yarn build");
+// Install Rust
+execSync("curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y");
+execSync("rustup target add wasm32-unknown-unknown");
+// wasm-pack should be installed globally through npm before this is run.
 
-// Move everything to /public
-rimraf.sync("./public");
-mkdirp.sync("./public");
+// Build Wasm
+// console.log(execSync("wasm-pack build --release", {
+//     cwd: wasmDir,
+//     encoding: "utf8"
+// }).toString());
 
-// const public = path.join(projectRoot, );
-fsExtra.copySync("./frontend/public/", "./public/");
-fsExtra.copySync("./chess-wasm/dist/","./public/", {
-    filter: (src, dest) => src.indexOf("index.html") == -1
-});
+// Build Project
+console.log(execSync("yarn build", {
+    encoding: "utf8"
+}).toString());

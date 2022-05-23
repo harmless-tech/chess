@@ -20,18 +20,14 @@ jobs:
             ~/.cargo/git
             ./.yarn/cache
             ./node_modules
-            ./frontend/.yarn/cache
-            ./frontend/node_modules
-            ./chess-wasm/.yarn/cache
-            ./chess-wasm/node_modules
-            ./chess-wasm/target
-          key: ${{ runner.os }}-yarn-cargo-${{ hashFiles('**/yarn.lock', '**/frontend/yarn.lock', '**/chess-wasm/yarn.lock', '**/chess-wasm/Cargo.lock') }}
+            ./wasm/target
+          key: ${{ runner.os }}-yarn-cargo-${{ hashFiles('**/yarn.lock', '**/wasm/Cargo.lock') }}
       - name: Install wasm-pack
         run: npm install -g wasm-pack
       - name: Yarn install
         run: yarn install
       - name: Yarn export
-        run: yarn cf
+        run: yarn build:script
       - name: Upload public folder
         uses: actions/upload-artifact@v3.1.0
         with:

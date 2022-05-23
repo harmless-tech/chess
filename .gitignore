@@ -1,11 +1,12 @@
-/public
-
-/.yarn/*
-!/.yarn/releases
-!/.yarn/plugins
-/node_modules/
-
 .idea/
 .vscode/
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+node_modules/
+
+public/
+pkg/
 
 .DS_Store

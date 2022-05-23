@@ -3,7 +3,4 @@
 bin/
 pkg/
 dist/
-/.yarn/*
-!/.yarn/releases
-/node_modules/
 wasm-pack.log

@@ -1,21 +1,39 @@
 {
-  "name": "chess",
+  "name": "chess-wasm",
+  "version": "0.0.1",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "chess-wasm"
-  ],
+  "author": {
+    "name": "harmless-tech"
+  },
+  "homepage": "https://chess.harmless.tech/",
+  "repository": "https://github.com/harmless-tech/chess",
+  "license": "MIT",
   "scripts": {
-    "cf": "node cf-setup.js && yarn export",
-    "export": "node build.js",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "build:script": "node build.js",
     "server": "http-server ./public --port 3001 --brotli --cors -c-1"
   },
-  "packageManager": "yarn@3.2.1",
   "devDependencies": {
-    "fs-extra": "^10.1.0",
+    "@tsconfig/svelte": "^3.0.0",
+    "@wasm-tool/wasm-pack-plugin": "^1.6.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
     "http-server": "^14.1.0",
     "manage-path": "^2.0.0",
-    "mkdirp": "^1.0.4",
-    "rimraf": "^3.0.2"
-  }
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss": "^8.4.14",
+    "sass": "^1.52.1",
+    "sass-loader": "^13.0.0",
+    "svelte": "^3.48.0",
+    "svelte-check": "^2.7.1",
+    "svelte-loader": "^3.1.2",
+    "svelte-preprocess": "^4.10.6",
+    "ts-loader": "^9.3.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "packageManager": "yarn@3.2.1"
 }
