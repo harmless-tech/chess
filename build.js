@@ -21,9 +21,9 @@ const install2 = exec("yarn install", {
 console.log(install1.toString("utf8"));
 console.log(install2.toString("utf8"));
 
-execSync("wasm-pack build --release", {
+console.log(execSync("wasm-pack build --release", {
     cwd: "./chess-wasm"
-});
+}).toString("utf8"));
 execSync("yarn build");
 
 // Move everything to /public
