@@ -4,17 +4,17 @@ const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const mode = process.env.NODE_ENV || "development";
-const prod = mode === "production";
+const mode = process.env.NODE_ENV;
+const prod = mode !== "development";
 
 module.exports = {
     entry: "./src/main.ts",
     devtool: prod ? false : "source-map",
     output: {
-        filename: "bundle.js",
+        filename: "[name].js",
         path: path.resolve(__dirname, "public"),
         clean: true,
-        library: "Chess"
+        library: "Chess",
     },
     resolve: {
 		alias: {
@@ -48,7 +48,6 @@ module.exports = {
                 test: /\.(scss|css)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    // "style-loader",
                     {
                         loader: "css-loader",
                         options: {
@@ -70,7 +69,8 @@ module.exports = {
     },
     plugins: [
         new WasmPackPlugin({
-            crateDirectory: path.resolve(__dirname, "wasm")
+            crateDirectory: path.resolve(__dirname, "wasm"),
+            forceMode: prod ? "production" : "development"
         }),
         new CopyPlugin({
             patterns: [
@@ -82,6 +82,7 @@ module.exports = {
 		})
     ],
     experiments: {
-        asyncWebAssembly: true
+        asyncWebAssembly: true,
+        topLevelAwait: true
     }
 }

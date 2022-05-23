@@ -709,6 +709,7 @@ __metadata:
   dependencies:
     "@tsconfig/svelte": ^3.0.0
     "@wasm-tool/wasm-pack-plugin": ^1.6.0
+    comlink: ^4.3.1
     copy-webpack-plugin: ^11.0.0
     css-loader: ^6.7.1
     http-server: ^14.1.0
@@ -825,6 +826,13 @@ __metadata:
   version: 2.0.16
   resolution: "colorette@npm:2.0.16"
   checksum: cd55596a3a2d1071c1a28eee7fd8a5387593ff1bd10a3e8d0a6221499311fe34a9f2b9272d77c391e0e003dcdc8934fb2f8d106e7ef1f7516f8060c901d41a27
+  languageName: node
+  linkType: hard
+
+"comlink@npm:^4.3.1":
+  version: 4.3.1
+  resolution: "comlink@npm:4.3.1"
+  checksum: 557360a6558708c55aff74a25f834bfb9bfca8a42444682c4d5aead57681534a0206202be2a2760b4de124c3ba6d485b08978b6d5469cb3d26bf1438ee28a4f1
   languageName: node
   linkType: hard
 
