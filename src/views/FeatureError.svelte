@@ -12,7 +12,6 @@
         <br>
         <p>You can press the button below to try and load the game anyways.</p>
         <button class="btn btn-primary" on:click={() => chess = true}>Force Game Load</button>
-        <!-- <button class="btn btn-secondary" on:click={}>Force Game Load</button> -->
     </div>
 </div>
 
