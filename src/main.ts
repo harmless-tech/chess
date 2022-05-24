@@ -2,6 +2,12 @@ import "./styles.scss";
 
 import ChessGen from "./chess-gen/chess-gen";
 // ChessGen.test();
+ChessGen.number();
+setInterval(() => {
+	ChessGen.number();
+}, 1000);
+
+ChessGen.array();
 
 (async () => {
 	for(let i = 0; i < 100; i++) {

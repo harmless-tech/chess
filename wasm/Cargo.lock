@@ -26,6 +26,7 @@ version = "0.0.1"
 dependencies = [
  "console_error_panic_hook",
  "getrandom",
+ "js-sys",
  "rand",
  "wasm-bindgen",
  "wee_alloc",
