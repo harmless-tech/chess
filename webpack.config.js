@@ -1,8 +1,10 @@
 const path = require("path");
+const glob = require("glob");
 const sveltePreprocess = require("svelte-preprocess");
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const PurgeCSSPlugin = require("purgecss-webpack-plugin");
 
 const mode = process.env.NODE_ENV;
 const prod = mode !== "development";
@@ -40,22 +42,20 @@ module.exports = {
                     },
                     emitCss: prod,
                     hotReload: !prod,
-                    preprocess: sveltePreprocess({ sourceMap: !prod })
+                    preprocess: sveltePreprocess({
+                        sourceMap: !prod,
+                        renderSync: true,
+                        postcss: true
+                    })
                 }
             }
             },
             {
-                test: /\.(scss|css)$/,
+                test: /\.(sa|sc|c)ss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: "css-loader",
-                        options: {
-                            modules: true,
-                            sourceMap: !prod,
-                            importLoaders: 2
-                        }
-                    },
+                    "css-loader",
+                    "postcss-loader",
                     "sass-loader"
                 ],
             },
@@ -79,10 +79,17 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
 			filename: "bundle.css"
-		})
+		}),
+        new PurgeCSSPlugin({
+            paths: glob.sync(`${path.resolve(__dirname, "src")}/**/*`,  { nodir: true }),
+        })
     ],
     experiments: {
         asyncWebAssembly: true,
         topLevelAwait: true
+    },
+    devServer: {
+        hot: true,
+        port: "8080"
     }
 }

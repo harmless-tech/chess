@@ -7,7 +7,7 @@ function getSharedWorker(): SharedWorker {
 }
 
 export default abstract class ChessGen {
-    private static readonly worker = new Worker(new URL("./chess-gen.worker", import.meta.url), { name: "chess-gen" });
+    private static readonly worker = getSharedWorker();//new Worker(new URL("./chess-gen.worker", import.meta.url), { name: "chess-gen" });
 
     public static test(): Promise<number> {
         const worker = getSharedWorker();

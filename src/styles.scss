@@ -1,4 +1,8 @@
+@import "~bootstrap/scss/bootstrap";
+
 body {
-    background-color: black;
-    color: red;
+    @extend .bg-dark;
+    @extend .text-white;
+
+    font-family: "Roboto", sans-serif;
 }

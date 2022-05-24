@@ -12,17 +12,28 @@
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
     "build:script": "node build.js",
-    "server": "http-server ./public --port 3001 --brotli --cors -c-1"
+    "server": "http-server ./public --port 3001 --brotli --cors -c-1",
+    "dev:server": "webpack serve"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.5",
+    "bootstrap": "^5.1.3"
   },
   "devDependencies": {
     "@tsconfig/svelte": "^3.0.0",
+    "@types/bootstrap": "^5.1.12",
     "@wasm-tool/wasm-pack-plugin": "^1.6.0",
+    "autoprefixer": "^10.4.7",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
+    "glob": "^8.0.3",
     "http-server": "^14.1.0",
     "manage-path": "^2.0.0",
     "mini-css-extract-plugin": "^2.6.0",
     "postcss": "^8.4.14",
+    "postcss-load-config": "^4.0.0",
+    "postcss-loader": "^7.0.0",
+    "purgecss-webpack-plugin": "^4.1.3",
     "sass": "^1.52.1",
     "sass-loader": "^13.0.0",
     "svelte": "^3.48.0",
@@ -33,7 +44,8 @@
     "tslib": "^2.4.0",
     "typescript": "^4.6.4",
     "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
   },
   "packageManager": "yarn@3.2.1"
 }
