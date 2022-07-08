@@ -13,7 +13,7 @@
     "dev": "webpack --mode development",
     "build:script": "node build.js",
     "server": "http-server ./public --port 3001 --brotli --cors -c-1",
-    "dev:server": "webpack serve"
+    "dev:server": "webpack serve --mode development"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.5",
@@ -27,25 +27,25 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "glob": "^8.0.3",
-    "http-server": "^14.1.0",
+    "http-server": "^14.1.1",
     "manage-path": "^2.0.0",
-    "mini-css-extract-plugin": "^2.6.0",
+    "mini-css-extract-plugin": "^2.6.1",
     "postcss": "^8.4.14",
-    "postcss-load-config": "^4.0.0",
+    "postcss-load-config": "^4.0.1",
     "postcss-loader": "^7.0.0",
     "purgecss-webpack-plugin": "^4.1.3",
-    "sass": "^1.52.1",
-    "sass-loader": "^13.0.0",
-    "svelte": "^3.48.0",
-    "svelte-check": "^2.7.1",
-    "svelte-loader": "^3.1.2",
-    "svelte-preprocess": "^4.10.6",
-    "ts-loader": "^9.3.0",
+    "sass": "^1.53.0",
+    "sass-loader": "^13.0.2",
+    "svelte": "^3.49.0",
+    "svelte-check": "^2.8.0",
+    "svelte-loader": "^3.1.3",
+    "svelte-preprocess": "^4.10.7",
+    "ts-loader": "^9.3.1",
     "tslib": "^2.4.0",
-    "typescript": "^4.6.4",
-    "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.9.0"
+    "typescript": "^4.7.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
   },
   "packageManager": "yarn@3.2.1"
 }
